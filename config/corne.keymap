@@ -22,6 +22,17 @@
         };
     };
 
+    macros {
+        rgblayer: rgb_layer {
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
+            bindings
+                = <&macro_press &to MACRO_PLACEHOLDER>
+                , <&macro_press &rgb_ug MACRO_PLACEHOLDER>
+                ;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -33,10 +44,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB     &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y    &kp U  &kp I      &kp O    &kp P     &kp BSPC
-&kp LSHIFT  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H    &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LCTRL   &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N    &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                          &kp LGUI  &to 1  &kp SPACE    &kp RET  &to 2  &kp RALT
+                &kp TAB     &kp Q  &kp W     &kp E                                    &kp R        &kp T        &kp Y    &kp U        &kp I      &kp O    &kp P     &kp BSPC
+                &kp LSHIFT  &kp A  &kp S     &kp D                                    &kp F        &kp G        &kp H    &kp J        &kp K      &kp L    &kp SEMI  &kp SQT
+                &kp LCTRL   &kp Z  &kp X     &kp C                                    &kp V        &kp B    &kp N    &kp M        &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
+                                   &kp LGUI  &rgblayer 1 RGB_COLOR_HSB(194,100,100)    &kp SPACE    &kp RET  &rgblayer 2 RGB_COLOR_HSB(34,100,100)  &kp RALT
             >;
         };
 
@@ -48,10 +59,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB           &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6   &kp N7          &kp N8    &kp N9           &kp N0  &kp BSPC
-&kp LEFT_SHIFT    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans   &trans          &kp UP    &trans           &trans  &trans
-&kp LEFT_CONTROL  &trans        &trans        &trans        &trans        &trans          &trans   &kp LEFT_ARROW  &kp DOWN  &kp RIGHT_ARROW  &trans  &kp ESCAPE
-                                              &kp LGUI      &to 0         &kp SPACE       &kp RET  &to 2           &kp RALT
+                &kp TAB           &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6   &kp N7          &kp N8    &kp N9           &kp N0  &kp BSPC
+                &kp LEFT_SHIFT    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans   &trans          &kp UP    &trans           &trans  &trans
+                &kp LEFT_CONTROL  &trans        &trans        &trans        &trans        &trans          &trans   &kp LEFT_ARROW  &kp DOWN  &kp RIGHT_ARROW  &trans  &kp ESCAPE
+                                                              &kp LGUI      &rgblayer 0 RGB_COLOR_HSB(50,0,100)         &kp SPACE       &kp RET  &rgblayer 2 RGB_COLOR_HSB(34,100,100)          &kp RALT
             >;
         };
 
@@ -63,10 +74,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp F1            &kp F2           &kp F3                             &kp F4           &kp F5           &kp F6             &kp F7     &kp F8     &kp F9    &kp F10                           &kp F11   &kp F12
-&kp LEFT_SHIFT    &trans           &rgb_ug RGB_COLOR_HSB(190,100,32)  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &rgb_ug RGB_EFF    &kp MINUS  &kp EQUAL  &kp LBKT  &rgb_ug RGB_COLOR_HSB(40,100,42)  &kp BSLH  &kp GRAVE
-&kp LEFT_CONTROL  &rgb_ug RGB_TOG  &rgb_ug RGB_SPD                    &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFR    &kp UNDER  &kp PLUS   &kp LBRC  &kp RBRC                          &kp PIPE  &kp TILDE
-                                                                      &kp LGUI         &to 1            &kp SPACE          &kp RET    &trans     &kp RALT
+                &kp F1            &kp F2           &kp F3                             &kp F4           &kp F5           &kp F6             &kp F7     &kp F8     &kp F9    &kp F10                           &kp F11   &kp F12
+                &kp LEFT_SHIFT    &trans           &rgb_ug RGB_COLOR_HSB(190,100,32)  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &rgb_ug RGB_EFF    &kp MINUS  &kp EQUAL  &kp LBKT  &rgb_ug RGB_COLOR_HSB(40,100,42)  &kp BSLH  &kp GRAVE
+                &kp LEFT_CONTROL  &rgb_ug RGB_TOG  &rgb_ug RGB_SPD                    &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFR    &kp UNDER  &kp PLUS   &kp LBRC  &kp RBRC                          &kp PIPE  &kp TILDE
+                                                                                      &kp LGUI         &rgblayer 1 RGB_COLOR_HSB(194,100,100)           &kp SPACE          &kp RET    &rgblayer 0 RGB_COLOR_HSB(50,0,100)    &kp RALT
             >;
         };
     };
